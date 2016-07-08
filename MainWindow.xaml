@@ -1,0 +1,178 @@
+﻿<Window x:Class="WPF_Language_Translator.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Language Translator" Height="510" Width="706" AllowsTransparency="True" WindowStartupLocation="CenterScreen" WindowStyle="None" Background="{x:Null}" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
+    <Window.Resources>
+
+        <Style x:Key="CloseButtonStyle" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Viewbox x:Name="Close">
+                                <Canvas Width="15.4167" Height="15.5001">
+                                    <Path x:Name="Rect1" Width="15.4167" Height="15.5001" Canvas.Left="0" Canvas.Top="0" Stretch="Fill" Fill="#00000000" Data="F1 M 2,0L 13.4167,0C 14.5212,0 15.4167,0.895447 15.4167,2L 15.4167,13.5001C 15.4167,14.6046 14.5212,15.5001 13.4167,15.5001L 2,15.5001C 0.895447,15.5001 0,14.6046 0,13.5001L 0,2C 0,0.895447 0.895447,0 2,0 Z "/>
+                                    <Path x:Name="X1" Width="15.001" Height="15.001" Canvas.Left="0.209" Canvas.Top="0.235" Stretch="Fill" Fill="#FF000000" Data="F1 M 14.7216,0.723328C 15.3725,1.37421 15.3725,2.4295 14.7216,3.08038L 10.0667,7.73535L 14.7218,12.3905C 15.3727,13.0414 15.3726,14.0966 14.7217,14.7475C 14.0709,15.3984 13.0156,15.3984 12.3647,14.7475L 7.70959,10.0924L 3.05438,14.7476C 2.4035,15.3985 1.34827,15.3985 0.697388,14.7476C 0.0465088,14.0967 0.0465088,13.0414 0.697388,12.3906L 5.3526,7.73541L 0.697449,3.08026C 0.0465698,2.42938 0.0465698,1.37415 0.697449,0.723267C 1.34833,0.0723877 2.40363,0.0723877 3.0545,0.723267L 7.70966,5.37836L 12.3646,0.723328C 13.0155,0.0724487 14.0707,0.0724487 14.7216,0.723328 Z "/>
+                                    <Path x:Name="X2" Width="13.6364" Height="13.6351" Canvas.Left="0.891403" Canvas.Top="0.91861" Stretch="Fill" Fill="#FFD7D7D7" Data="F1 M 1.19855,1.2243C 1.60614,0.816711 2.26715,0.816711 2.67474,1.2243L 7.70966,6.25922L 12.7444,1.22443C 13.152,0.816711 13.813,0.816711 14.2207,1.22437C 14.6284,1.63202 14.6284,2.29303 14.2206,2.70062L 9.18585,7.73541L 14.222,12.7716C 14.6297,13.1793 14.6297,13.8402 14.222,14.2479C 13.8143,14.6556 13.1535,14.6556 12.7458,14.2479L 7.70966,9.21173L 2.67346,14.2479C 2.26575,14.6556 1.6048,14.6556 1.19714,14.2479C 0.78949,13.8403 0.78949,13.1793 1.19714,12.7716L 6.23334,7.73541L 1.19855,2.70062C 0.790894,2.29297 0.790833,1.63202 1.19855,1.2243 Z "/>
+                                </Canvas>
+                            </Viewbox>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Fill" TargetName="X2" Value="#FF00E4E0"/>
+                            </Trigger>
+                            <Trigger Property="IsDefaulted" Value="True"/>
+                            <Trigger Property="IsMouseOver" Value="True"/>
+                            <Trigger Property="IsPressed" Value="True"/>
+                            <Trigger Property="IsEnabled" Value="False"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="MinimizeButtonStyle" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Viewbox x:Name="Minimize">
+                                <Canvas Width="15.4166" Height="15.5">
+                                    <Path x:Name="Rect" Width="15.4166" Height="15.5" Canvas.Left="0" Canvas.Top="0" Stretch="Fill" Fill="#00C80000" Data="F1 M 2,0L 13.4166,0C 14.5212,0 15.4166,0.895386 15.4166,2L 15.4166,13.5C 15.4166,14.6046 14.5212,15.5 13.4166,15.5L 2,15.5C 0.895386,15.5 0,14.6046 0,13.5L 0,2C 0,0.895386 0.895386,0 2,0 Z "/>
+                                    <Path x:Name="Path" Width="15" Height="3.29211" Canvas.Left="0.203247" Canvas.Top="12.0621" Stretch="Fill" Fill="#FF000000" Data="F1 M 1.84924,12.0621L 13.5572,12.0621C 14.4663,12.0621 15.2032,12.7991 15.2032,13.7082L 15.2032,13.7082C 15.2032,14.6173 14.4663,15.3542 13.5572,15.3542L 1.84924,15.3542C 0.940186,15.3542 0.203247,14.6173 0.203247,13.7082L 0.203247,13.7082C 0.203247,12.7991 0.940186,12.0621 1.84924,12.0621 Z "/>
+                                    <Path x:Name="Path_0" Width="13.6262" Height="2.20911" Canvas.Left="0.890076" Canvas.Top="12.6036" Stretch="Fill" Fill="#FFCBCBCB" Data="F1 M 1.99463,12.6036L 13.4117,12.6036C 14.0218,12.6036 14.5162,13.0981 14.5162,13.7082L 14.5162,13.7082C 14.5162,14.3182 14.0218,14.8127 13.4117,14.8127L 1.99463,14.8127C 1.38458,14.8127 0.890076,14.3182 0.890076,13.7082L 0.890076,13.7082C 0.890076,13.0981 1.38458,12.6036 1.99463,12.6036 Z "/>
+                                </Canvas>
+                            </Viewbox>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Fill" TargetName="Path_0" Value="#FF00E4E0"/>
+                            </Trigger>
+                            <Trigger Property="IsDefaulted" Value="True"/>
+                            <Trigger Property="IsMouseOver" Value="True"/>
+                            <Trigger Property="IsPressed" Value="True"/>
+                            <Trigger Property="IsEnabled" Value="False"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <ControlTemplate x:Key="ButtonControlTemplate1" TargetType="{x:Type Button}">
+            <ControlTemplate.Resources>
+                <Storyboard x:Key="Storyboard1">
+                    <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="GlowButtonRct" Storyboard.TargetProperty="(UIElement.Opacity)">
+                        <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                        <SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="1"/>
+                    </DoubleAnimationUsingKeyFrames>
+                    <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ButtonBgrnRct" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
+                        <SplineColorKeyFrame KeyTime="00:00:00" Value="#EA0D1D28"/>
+                        <SplineColorKeyFrame KeyTime="00:00:00.3000000" Value="#FF0B161E"/>
+                    </ColorAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ShineButtonRct" Storyboard.TargetProperty="(UIElement.Opacity)">
+                        <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+                        <SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0.94"/>
+                    </DoubleAnimationUsingKeyFrames>
+                </Storyboard>
+                <Storyboard x:Key="Storyboard2">
+                    <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="GlowButtonRct" Storyboard.TargetProperty="(UIElement.Opacity)">
+                        <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+                        <SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0"/>
+                    </DoubleAnimationUsingKeyFrames>
+                    <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ButtonBgrnRct" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
+                        <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF0B161E"/>
+                        <SplineColorKeyFrame KeyTime="00:00:00.3000000" Value="#FF0C1C28"/>
+                    </ColorAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ShineButtonRct" Storyboard.TargetProperty="(UIElement.Opacity)">
+                        <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.94"/>
+                        <SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="1"/>
+                    </DoubleAnimationUsingKeyFrames>
+                </Storyboard>
+            </ControlTemplate.Resources>
+            <Grid>
+                <Rectangle Fill="#EA0D1D28" Stroke="#FFB8C5CC" RadiusX="3.5" RadiusY="3.5" x:Name="ButtonBgrnRct"/>
+                <Rectangle Stroke="{x:Null}" RadiusX="2.999" RadiusY="2.999" x:Name="GlowButtonRct" Margin="1.001,1.001,1.166,1.166" Opacity="0">
+                    <Rectangle.Fill>
+                        <RadialGradientBrush GradientOrigin="0.491,0.514">
+                            <RadialGradientBrush.RelativeTransform>
+                                <TransformGroup>
+                                    <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="1.832" ScaleY="1.832"/>
+                                    <SkewTransform AngleX="0" AngleY="0" CenterX="0.5" CenterY="0.5"/>
+                                    <RotateTransform Angle="0" CenterX="0.5" CenterY="0.5"/>
+                                    <TranslateTransform X="0" Y="0.496"/>
+                                </TransformGroup>
+                            </RadialGradientBrush.RelativeTransform>
+                            <GradientStop Color="#F2006999" Offset="0"/>
+                            <GradientStop Color="#00006897" Offset="1"/>
+                        </RadialGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <ContentPresenter HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center"/>
+                <Rectangle Stroke="{x:Null}" RadiusX="2.665" RadiusY="2.665" Margin="1.335,1.332,1.332,10.668" x:Name="ShineButtonRct">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#7EFFFFFF" Offset="0"/>
+                            <GradientStop Color="#14FFFFFF" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.ExitActions>
+                        <BeginStoryboard Storyboard="{StaticResource Storyboard2}" x:Name="Storyboard2_BeginStoryboard"/>
+                    </Trigger.ExitActions>
+                    <Trigger.EnterActions>
+                        <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+                    </Trigger.EnterActions>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
+    <Grid>
+
+        <Rectangle Fill="#F92A2C2D" Stroke="#FF90A8B4" RadiusX="5.5" RadiusY="5.5" x:Name="WinBgrndRct"/>
+        <Grid Margin="25,48,25,0" x:Name="TextToTranslateGrid" VerticalAlignment="Top" Height="188">
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Width="143" Height="19" FontFamily="Myriad Pro" FontSize="14" Foreground="#FFFFAD1C" Text="Text to Translate" TextWrapping="Wrap"/>
+            <TextBox Margin="0,20,0,0" x:Name="TextToTranslateTxtBox" FontFamily="Myriad Pro" FontSize="14" Text="" TextWrapping="Wrap"/>
+        </Grid>
+        <Border Margin="1.25,1.25,1.25,0" x:Name="TitleBarBorder" VerticalAlignment="Top" Height="27.25" BorderBrush="#FFE5EEF2" BorderThickness="0,0,0,4" CornerRadius="4.6,4.6,0,0">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF518E00" Offset="0"/>
+                    <GradientStop Color="#FF335700" Offset="1"/>
+                    <GradientStop Color="#FF345B00" Offset="0.728"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid x:Name="TitleBarGrid">
+                <TextBlock HorizontalAlignment="Left" Margin="15,4.5,0,0" Width="111.75" FontFamily="./Fonts/#Lithos Pro" FontSize="12" Foreground="#F8FFFFFF" Text="Translator" TextWrapping="Wrap" d:IsStaticText="True"/>
+                <Rectangle Stroke="{x:Null}" RadiusX="4.708" RadiusY="4.708" Margin="0.334,0.5,0.25,10.792" d:LayoutOverrides="VerticalAlignment">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#56FFFFFF" Offset="0"/>
+                            <GradientStop Color="#12FFFFFF" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" RadiusX="4.583" RadiusY="4.583" x:Name="DragRct" Opacity="0"/>
+                <Button Style="{DynamicResource CloseButtonStyle}" Width="11.195" Content="Button" x:Name="CloseButton" Cursor="Hand" HorizontalAlignment="Right" Margin="0,5.333,11.968,5.147" Click="CloseButton_Click" />
+                <Button Style="{DynamicResource MinimizeButtonStyle}" Width="12.402" Content="Button" x:Name="MinimizeButton" Cursor="Hand" HorizontalAlignment="Right" Margin="0,4.483,29.106,5.23" Click="MinimizeButton_Click" />
+            </Grid>
+        </Border>
+        <Grid HorizontalAlignment="Left" Margin="57,0,0,231" x:Name="FromGrid" Width="178.389" Height="23" VerticalAlignment="Bottom">
+            <TextBlock HorizontalAlignment="Left" Margin="0,3,0,1" Width="57" FontFamily="Myriad Pro" FontSize="14" Foreground="#FFE9E9E9" Text="From" TextWrapping="Wrap"/>
+            <ComboBox Margin="39,0,0,0" x:Name="FromLanguageCmbBox" IsSynchronizedWithCurrentItem="True" FontFamily="Myriad Pro" FontSize="14"/>
+        </Grid>
+        <Grid Margin="254.339,0,290.611,231" x:Name="ToGrid" Height="23" VerticalAlignment="Bottom">
+            <TextBlock Margin="0,3,0,1" FontFamily="Myriad Pro" FontSize="14" Foreground="#FFE9E9E9" Text="To" TextWrapping="Wrap" HorizontalAlignment="Left" Width="57"/>
+            <ComboBox Margin="22,0,0,0" IsSynchronizedWithCurrentItem="True" x:Name="ToLanguageCmbBox" FontFamily="Myriad Pro" FontSize="14"/>
+        </Grid>
+        <Button HorizontalAlignment="Right" Margin="0,0,173,231" Width="93" Content="Translate" FontFamily="Myriad Pro" FontSize="12" Foreground="#FFEDEDED" Template="{DynamicResource ButtonControlTemplate1}" Cursor="Hand" x:Name="TranslateButton" Height="23" VerticalAlignment="Bottom" Click="TranslateButton_Click" />
+        <Button HorizontalAlignment="Right" Margin="0,0,60,231" Width="91" Content="Clear" FontFamily="Myriad Pro" FontSize="12" Foreground="#FFEDEDED" Template="{DynamicResource ButtonControlTemplate1}" Cursor="Hand" x:Name="ClearButton" Height="23" VerticalAlignment="Bottom" Click="ClearButton_Click" />
+        <Grid Margin="25,0,25,28" x:Name="TranslatedTextGrid" VerticalAlignment="Bottom" Height="188">
+            <TextBox Margin="0,21,0,0" x:Name="TranslatedTextTxtBox" FontFamily="Myriad Pro" FontSize="14" Text="" TextWrapping="Wrap"/>
+            <TextBlock HorizontalAlignment="Left" Width="143" FontFamily="Myriad Pro" FontSize="14" Foreground="#FFFFAD1C" Text="Translated Text" TextWrapping="Wrap" VerticalAlignment="Top" Height="19"/>
+        </Grid>
+
+    </Grid>
+</Window>
+
